@@ -12,6 +12,8 @@ class User < ApplicationRecord
 	has_many :receiver_relationships, foreign_key: :requestor_id, class_name: 'Friendship'
 	has_many :receivers, through: :receiver_relationships, source: :receiver
 
+	has_many :posts
+
 	validates_presence_of :first_name, :last_name, :email
 
 	def follow(user_id)
