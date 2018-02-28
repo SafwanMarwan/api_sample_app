@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace 'api' do
   	namespace 'v1' do
-  		resources :users
+  		resources :users do
+  			collection do
+  				post 'receive_update', to: 'users#receive_update'
+  			end
+  		end
   		resources :relationships do
   			collection do
   				post 'subscribe', to: 'relationships#subscribe'
